@@ -6,6 +6,7 @@ const EmployeeList = () => {
   const [employeeList, setEmployeeList] = useState([]);
 
   const navigate = useNavigate();
+  //fetch all empployees data
   const fetchData = async () => {
     await EmployeeData.getAllEmployees().then((data) => {
       setEmployeeList(data);
@@ -16,10 +17,13 @@ const EmployeeList = () => {
     fetchData();
   }, []);
 
+  //handling fetching employee detail with id
   const handleGetEmployee = async (id) => {
     navigate(`/edit/${id}`, { state: id });
     console.log(id);
   };
+
+  //handling delete employee through id
 
   const handleDeleteEmployee = async (id) => {
     const deleteYes = window.confirm(
